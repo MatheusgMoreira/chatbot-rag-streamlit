@@ -58,7 +58,7 @@ if is_db_ready:
             return None, None, None
 
         embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", temperature=0.0)
+        llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0.0)
         
         persist_directory = 'chroma_db_gemini'
         

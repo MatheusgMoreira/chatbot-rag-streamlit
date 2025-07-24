@@ -17,7 +17,7 @@ import os
 @st.cache_resource
 def setup_database():
     PERSIST_DIRECTORY = 'chroma_db_gemini'
-    DB_ZIP_URL = "https://drive.google.com/file/d/1evAv8YK5AiDBdnrAYJTFmEVwcD67cHjH/view?usp=drive_link" # Seu link original
+    DB_ZIP_URL = "https://drive.google.com/file/d/1evAv8YK5AiDBdnrAYJTFmEVwcD67cHjH/view?export=download"
     
     if not os.path.exists(PERSIST_DIRECTORY):
         st.info("Base de dados não encontrada. Baixando e configurando...")

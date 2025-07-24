@@ -1,0 +1,27 @@
+# Framework Principal (LangChain)
+langchain
+langchain-core
+langchain-community
+
+# Provedores de LLM e Embeddings
+langchain-google-genai
+google-generativeai
+langchain-openai
+
+# Banco de Dados Vetorial
+chromadb
+
+# Interface Gráfica e Componentes de Chat
+streamlit
+
+# Manipulação e Carregamento de Dados
+pandas
+pymupdf # Para carregar PDFs
+
+# Utilitários e Correções de Bugs
+python-dotenv # Para carregar chaves de API do arquivo .env
+requests # Para baixar a base de dados da nuvem, se necessário
+tqdm # Para barras de progresso
+weasyprint # Para converter CSV/HTML para PDF
+nest-asyncio # Para corrigir o erro de event loop no Streamlit
+numpy<2.0 # Importante: Evita erros de compatibilidade com outras bibliotecas

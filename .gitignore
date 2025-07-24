@@ -1,0 +1,14 @@
+# Arquivo de segredos
+.env
+
+# Pasta do banco de dados local
+chroma_db_chamados_persistente/
+chroma_db_pdf_persistente/
+chroma_db_gemini/
+
+# Arquivos de ambiente Python
+venv/
+__pycache__/
+
+# Arquivos do Streamlit
+.streamlit/

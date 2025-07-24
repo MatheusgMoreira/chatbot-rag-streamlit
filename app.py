@@ -14,9 +14,6 @@ import zipfile
 import io
 import os
 
-PERSIST_DIRECTORY = 'chroma_db_gemini'
-DB_ZIP_URL = "https://drive.google.com/file/d/1evAv8YK5AiDBdnrAYJTFmEVwcD67cHjH/view?usp=drive_link"
-
 @st.cache_resource
 def setup_database():
     PERSIST_DIRECTORY = 'chroma_db_gemini'
@@ -25,7 +22,7 @@ def setup_database():
     if not os.path.exists(PERSIST_DIRECTORY):
         st.info("Base de dados não encontrada. Baixando e configurando...")
         
-        output_zip_path = "chroma_db.zip" # Nome do arquivo que será salvo localmente
+        output_zip_path = "chroma_db_gemini.zip" # Nome do arquivo que será salvo localmente
         
         try:
             # 1. Usar gdown para baixar o arquivo

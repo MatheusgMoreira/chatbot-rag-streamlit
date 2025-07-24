@@ -17,6 +17,7 @@ streamlit
 # Manipulação e Carregamento de Dados
 pandas
 pymupdf # Para carregar PDFs
+gdown
 
 # Utilitários e Correções de Bugs
 python-dotenv # Para carregar chaves de API do arquivo .env

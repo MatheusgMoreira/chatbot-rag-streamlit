@@ -1,3 +1,4 @@
+import gdown
 import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import Chroma
@@ -18,17 +19,32 @@ DB_ZIP_URL = "https://drive.google.com/file/d/1evAv8YK5AiDBdnrAYJTFmEVwcD67cHjH/
 
 @st.cache_resource
 def setup_database():
+    PERSIST_DIRECTORY = 'chroma_db_gemini'
+    DB_ZIP_URL = "https://drive.google.com/file/d/1evAv8YK5AiDBdnrAYJTFmEVwcD67cHjH/view?usp=drive_link" # Seu link original
+    
     if not os.path.exists(PERSIST_DIRECTORY):
         st.info("Base de dados não encontrada. Baixando e configurando...")
+        
+        output_zip_path = "chroma_db.zip" # Nome do arquivo que será salvo localmente
+        
         try:
-            r = requests.get(DB_ZIP_URL, stream=True)
-            r.raise_for_status() # Lança um erro se o download falhar
-            z = zipfile.ZipFile(io.BytesIO(r.content))
-            z.extractall()
+            # 1. Usar gdown para baixar o arquivo
+            gdown.download(url=DB_ZIP_URL, output=output_zip_path, quiet=False)
+            
+            # 2. Descompactar o arquivo baixado
+            with zipfile.ZipFile(output_zip_path, 'r') as zip_ref:
+                zip_ref.extractall() # Extrai para a pasta raiz
+            
+            # 3. Remover o arquivo .zip após a extração
+            os.remove(output_zip_path)
+            
             st.success("Base de dados configurada com sucesso!")
+            # st.rerun() # Descomente se quiser que a página recarregue automaticamente
+            
         except Exception as e:
             st.error(f"Falha ao baixar ou descompactar a base de dados: {e}")
             return False
+            
     return True
 
 # Chame a função de setup no início da sua aplicação

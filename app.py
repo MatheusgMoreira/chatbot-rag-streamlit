@@ -79,7 +79,15 @@ if is_db_ready:
             df_meta = pd.DataFrame(metadata_list)
             
             # Define as colunas que queremos usar como filtro
-            filter_columns = ['SERVICO_REALIZADO', 'ATENDIMENTO_REMOTO', 'TECNOLOGIA', 'EQUIPAMENTO', 'CAUSA']
+            filter_columns = [
+            'SERVICO_REALIZADO', 
+            'ATENDIMENTO_REMOTO', 
+            'TECNOLOGIA', 
+            'EQUIPAMENTO', 
+            'CAUSA',
+            'fonte',   
+            'severidade'
+        ]
             
             filter_options = {}
             for col in filter_columns:

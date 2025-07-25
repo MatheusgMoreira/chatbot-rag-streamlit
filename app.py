@@ -82,7 +82,7 @@ if is_db_ready:
             filter_columns = [
             'SERVICO_REALIZADO', 
             'tecnologia',
-            'Código SIP'
+            'codigo'
             'EQUIPAMENTO', 
             'CAUSA',  
             'ATENDIMENTO_REMOTO', 

@@ -12,7 +12,6 @@ from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 import os
 import pandas as pd
-import streamlit as st
 import requests
 import zipfile
 import io
@@ -82,7 +81,7 @@ if is_db_ready:
             filter_columns = [
             'SERVICO_REALIZADO', 
             'tecnologia',
-            'codigo'
+            'codigo',
             'EQUIPAMENTO', 
             'CAUSA',  
             'ATENDIMENTO_REMOTO', 

@@ -81,12 +81,11 @@ if is_db_ready:
             # Define as colunas que queremos usar como filtro
             filter_columns = [
             'SERVICO_REALIZADO', 
-            'ATENDIMENTO_REMOTO', 
-            'TECNOLOGIA', 
+            'tecnologia',
+            'Código SIP'
             'EQUIPAMENTO', 
-            'CAUSA',
-            'fonte',   
-            'severidade'
+            'CAUSA',  
+            'ATENDIMENTO_REMOTO', 
         ]
             
             filter_options = {}

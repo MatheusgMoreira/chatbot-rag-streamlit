@@ -12,9 +12,7 @@ from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 import os
 import pandas as pd
-import requests
 import zipfile
-import io
 import os
 
 @st.cache_resource
@@ -23,8 +21,6 @@ def setup_database():
     DB_ZIP_URL = "https://github.com/MatheusgMoreira/chatbot-rag-streamlit/releases/download/v1.0.0/chroma_db_gemini.zip"
     
     if not os.path.exists(PERSIST_DIRECTORY):
-        st.info("Base de dados não encontrada. Baixando e configurando...")
-        
         output_zip_path = "chroma_db_gemini.zip" # Nome do arquivo que será salvo localmente
         
         try:
@@ -37,9 +33,6 @@ def setup_database():
             
             # 3. Remover o arquivo .zip após a extração
             os.remove(output_zip_path)
-            
-            st.success("Base de dados configurada com sucesso!")
-            # st.rerun() # Descomente se quiser que a página recarregue automaticamente
             
         except Exception as e:
             st.error(f"Falha ao baixar ou descompactar a base de dados: {e}")
@@ -79,12 +72,7 @@ if is_db_ready:
             
             # Define as colunas que queremos usar como filtro
             filter_columns = [
-            'SERVICO_REALIZADO', 
-            'tecnologia',
-            'codigo',
-            'EQUIPAMENTO', 
-            'CAUSA',  
-            'ATENDIMENTO_REMOTO', 
+            'Tópico'
         ]
             
             filter_options = {}

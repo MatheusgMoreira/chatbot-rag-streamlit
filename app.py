@@ -99,35 +99,8 @@ if is_db_ready:
     llm, vectordb, filter_options = load_resources()
 
     if llm and vectordb:
-        with st.sidebar:
-            st.header("Filtros de Busca")
-            
-            # Cria um dicionário para guardar as seleções do usuário
-            selected_filters = {}
-            
-            # Loop para criar os widgets de filtro dinamicamente
-            for key, options in filter_options.items():
-                # Formata o rótulo para ficar mais amigável
-                label = f"Filtrar por {key.replace('_', ' ').title()}:"
-                selected_filters[key] = st.selectbox(label, options=options)
-
-        # Constrói a lista de condições de filtro
-        filter_conditions = []
-        for key, value in selected_filters.items():
-            if value != 'Todos':
-                filter_conditions.append({key: {'$eq': value}})
-
-        # Monta o dicionário de filtro final no formato que o ChromaDB espera
-        final_filter = {}
-        if len(filter_conditions) > 1:
-            final_filter['$and'] = filter_conditions
-        elif len(filter_conditions) == 1:
-            final_filter = filter_conditions[0]
-
         # Define os argumentos da busca, incluindo o filtro apenas se ele não estiver vazio
         search_kwargs = {'k': 5}
-        if final_filter:
-            search_kwargs['filter'] = final_filter
 
         retriever = vectordb.as_retriever(search_kwargs=search_kwargs)
 

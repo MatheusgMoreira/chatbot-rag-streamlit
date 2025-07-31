@@ -72,7 +72,7 @@ if is_db_ready:
             
             # Define as colunas que queremos usar como filtro
             filter_columns = [
-            'Tópico'
+                
         ]
             
             filter_options = {}
